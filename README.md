@@ -2,7 +2,7 @@
 
 `ZoomEye` 是一款网络空间搜索引擎，可让用户查找特定的网络组件。 `ZoomEye API` 是 `ZoomEye` 提供的 API 接口，通过 `HTTPS` 查询数据，方便用户在自己的应用中使用 ZoomEye 。
 
-`ZoomEye Python3` 是一款基于 `ZoomEye API` 开发的命令行工具，同时也是集成了 `ZoomEye SDK` 的 Python 库。
+`ZoomEye Python` 是一款基于 `ZoomEye API` 开发的命令行工具，同时也是集成了 `ZoomEye SDK` 的 Python 库。
 
 支持版本：**Python3+**
 
