@@ -63,7 +63,7 @@ def main():
         type=str,
         help=('''
             Perform statistics on ZoomEye database,
-            field: [app,device,service,os,port,country,city]"
+            field: [app,device,service,os,port,country,city]
         '''),
         metavar='field'
     )
@@ -84,7 +84,7 @@ def main():
         default=None,
         metavar='field',
         nargs='?',
-        const='app',
+        const='app,device,service,os,port,country,city',
         type=str,
         help=('''
               Perform statistics on search results,
@@ -111,7 +111,7 @@ def main():
     parser_search.set_defaults(func=core.search)
 
     # initial account configuration related commands
-    parser_init = subparsers.add_parser("init", help="Initialize the ZoomEye command-line")
+    parser_init = subparsers.add_parser("init", help="Initialize the token for ZoomEye-python")
     parser_init.add_argument("-apikey", help="ZoomEye API Key", default=None, metavar='[api key]')
     parser_init.add_argument("-username", help="ZoomEye account username", default=None, metavar='[username]')
     parser_init.add_argument("-password", help="ZoomEye account password", default=None, metavar='[password]')

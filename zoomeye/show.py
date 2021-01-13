@@ -103,7 +103,7 @@ def print_data(data_list):
             banner_content)
         )
     print()
-    printf("total: {}\n".format(total))
+    printf("total: {}".format(total))
 
 
 def print_filter(keys, data):

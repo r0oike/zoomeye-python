@@ -25,16 +25,14 @@ fields_tables_host = {
 }
 
 fields_tables_web = {
-    "ip":           "ip",
-    "app":          "webapp",
-    "headers":      "headers",
-    "keywords":     "keywords",
-    "title":        "title",
-    "site":         "site",
-    "city":         "geoinfo.city.names.en",
-    "city_cn":      "geoinfo.city.names.zh-CN",
-    "country":      "geoinfo.country.names.en",
-    "country_cn":   "geoinfo.country.names.zh-CN"
+    "ip":       "ip",
+    "app":      "webapp",
+    "headers":  "headers",
+    "keywords": "keywords",
+    "title":    "title",
+    "site":     "site",
+    "city":     "geoinfo.city.names.en",
+    "country":  "geoinfo.country.names.en",
 }
 
 
@@ -83,6 +81,7 @@ class ZoomEye:
         self.login_api = "https://api.zoomeye.org/user/login"
         self.search_api = "https://api.zoomeye.org/{}/search"
         self.user_info_api = "https://api.zoomeye.org/resources-info"
+        self.history_api = "https://api.zoomeye.org/both/search?history=true&ip={}"
 
     def _request(self, url, params=None, headers=None, method='GET'):
         """
@@ -154,6 +153,7 @@ class ZoomEye:
             self.data_list = matches
             self.facet_data = resp.get("facets")
             self.total = resp.get("total")
+            self.search_type = resource
 
         return result
 
@@ -181,9 +181,11 @@ class ZoomEye:
         """
         search_api = self.search_api.format(resource)
 
-        headers = {'Authorization': 'JWT %s' % self.access_token,
-                   'API-KEY': self.api_key,
-                   }
+        headers = {
+            'Authorization': 'JWT %s' % self.access_token,
+            'API-KEY': self.api_key,
+        }
+
         dork_data = []
         all_data = []
 
@@ -267,6 +269,23 @@ class ZoomEye:
         """
         return self.facet_data
 
+    def history_ip(self, ip):
+        """
+        Query IP History Information.
+        see: https://www.zoomeye.org/doc#history-data
+        param: ip
+        """
+        result = []
+
+        zoomeye_api = self.history_api.format(ip)
+        headers = {'Authorization': 'JWT %s' % self.access_token,
+                   'API-KEY': self.api_key,
+                   }
+        resp = self._request(zoomeye_api, headers=headers)
+        if resp and 'data' in resp:
+            result = resp
+        return result
+
 
 def show_site_ip(data):
     """
@@ -314,4 +333,3 @@ def zoomeye_api_test():
 
 if __name__ == "__main__":
     zoomeye_api_test()
-
