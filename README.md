@@ -189,7 +189,7 @@ $ cat telnet_1_1610446755.json
 
 
 ### 0x03 演示视频
-[![asciicast](images/yMvlV76xyVuwjuiTJtRPKrHS2.svg)](https://asciinema.org/a/yMvlV76xyVuwjuiTJtRPKrHS2)
+[![asciicast](https://asciinema.org/a/qyDaJw9qQc7UjffD04HzMApWa.svg)](https://asciinema.org/a/qyDaJw9qQc7UjffD04HzMApWa)
 
 
 ### 0x04 使用SDK
@@ -261,7 +261,7 @@ soft********26216022.b***c.net ['126.***.***.22']
 soft********5084068.b***c.net ['126.***.***.68']
 soft********11180040.b***c.net ['126.***.***.40']
 ...
-``` 
+```
 
 #### 4.数据搜索
 如上示例，我们使用 `dork_search()` 进行搜索，我们还可以设置 `facets` 参数，以便获得该 dork 全量数据的聚合统计结果，`facets` 支持的字段请参考 **2.cli使用-4数据聚合**。示例如下：
